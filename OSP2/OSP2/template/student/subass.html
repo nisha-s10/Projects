@@ -1,0 +1,63 @@
+{% extends 'student/header.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{subject}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+    <br><br>
+<div class="container">
+    <table class="table table-striped table-bordered table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Due</th>
+                <th scope="col">File</th>
+                <th scope="col">Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{assign.title}}</td>
+                <td>{{assign.description}}</td>
+
+                <td>{{assign.due}}</td>
+                <td><a href="{{assign.fass.url}}" download="{assign.fass.url}}">Download</a></td>
+                <td><a href="{{sassign.sass.url}}" download="{assign.sass.url}}">Download</a></td>
+                <td><a href="#"><i class="fa fa-trash fa-2x"></i></a></td>
+            </tr>
+         
+        </tbody>
+    </table>
+   
+</div>
+<br><br>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Submit Assignment</legend>
+        </fieldset>
+        {{form|crispy}}
+        <div class="form-group">
+            <button href="" class="btn btn-outline-info" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

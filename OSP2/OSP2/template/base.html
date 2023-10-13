@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">-->
+    <!--    <link rel="stylesheet" type="text/css" href="file:///C:/Users/Asus/PycharmProjects/ClassProject_OSP%2001-08-2021/OSP/template/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="file:///C:/Users/Asus/PycharmProjects/ClassProject_OSP%2001-08-2021/OSP/static/bootstrap.min.css">-->
+
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/media/bootstrap.min.css">
+    <link rel="script" href="http://127.0.0.1:8000/media/bootstrap.min.js">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: white;
+        padding: 0px;
+    }
+    
+    .cform {
+        text-decoration: none;
+        margin-left: 400px;
+        margin-right: 400px;
+        margin-top: 100px;
+        padding: 100px;
+        background-color: #333;
+    }
+    
+    h1 {
+        color: white;
+        text-align: center;
+    }
+    
+    p {
+        color: black;
+    }
+    
+    .but {
+        background-color: #0d6efd;
+        padding: 10px 15px;
+        color: white;
+        text-decoration: none;
+    }
+    /* footer */
+    
+    .header-font {
+        font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #fd1506;
+        margin-left: 5px;
+    }
+    
+    .fa-facebook {
+        color: #3b5998;
+    }
+    
+    .fa-linkedin {
+        color: #0077B5;
+    }
+    
+    .fa-twitter {
+        color: #4099FF;
+    }
+    
+    .fa-google {
+        color: #d34836;
+    }
+    
+    .bg-primary {
+        background-color: #000 !important;
+    }
+    
+    .bg-circle {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        padding: 14px 4px;
+        color: #ececec;
+        text-align: center;
+        border-radius: 50%;
+    }
+    
+    .bg-circle-outline {
+        width: 50px;
+        height: 50px;
+        color: smoke;
+        padding: 8px 2px;
+        border: 2px solid;
+        border-color: smoke;
+        border-radius: 50%;
+    }
+    
+    .bg-circle a,
+    a:hover,
+    .media a:focus {
+        text-decoration: none !important;
+        outline: none;
+        color: #ececec;
+    }
+    
+    .bg-circle-outline a,
+    a:hover,
+    .media a:focus {
+        text-decoration: none !important;
+        outline: none;
+        color: #ececec;
+    }
+    
+    .footer {
+        background: #EDEFF1;
+        height: auto;
+        padding-bottom: 30px;
+        position: relative;
+        width: 100%;
+        border-bottom: 1px solid #CCCCCC;
+        border-top: 1px solid #DDDDDD;
+    }
+    
+    .footer p {
+        margin: 0;
+    }
+    
+    .footer img {
+        max-width: 100%;
+    }
+    
+    .footer h3 {
+        border-bottom: 1px solid #BAC1C8;
+        color: #54697E;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 27px;
+        padding: 40px 0 10px;
+        text-transform: uppercase;
+    }
+    
+    .footer ul {
+        font-size: 13px;
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+        margin-top: 15px;
+        color: #7F8C8D;
+    }
+    
+    .footer ul li a {
+        padding: 0 0 5px 0;
+        display: block;
+    }
+    
+    .footer a {
+        color: #78828D
+    }
+</style>
+
+<body>
+    <!--<nav class="topnav">-->
+    <!--        <a class="active" href="/ ">Home</a>-->
+    <!--    	<a href="../college/login" >Login</a>-->
+    <!--    	<a href="../contact">Contact</a>-->
+    <!--    	<a href="../about">About</a>-->
+    <!--        <a href="../college/regcollege">Register Your College</a>-->
+    <!--        <a href="../showcollege">Show Colleges</a>-->
+    <!--        <he class="title">OpenSource Project</he>-->
+    <!--    </nav>-->
+    <nav class="navbar navbar-light bg-light justiy-content-between">
+        <!--navbar-expand-lg-->
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link {% block homeactive %}{% endblock %}" href="/ ">Home</a>
+            </li>
+            <!-- <li class="nav-item">
+      <a class="nav-link " href="../college/login">College Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="../student/login">Student Login</a>
+    </li> -->
+            <li class="nav-item">
+                <a class="nav-link {% block regcollegeactive %}{% endblock %}" href="/clgreg">Register College</a>
+            </li>
+            <li class="nav-item">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+Login
+</a>
+                    <ul class="dropdown-menu p-3 mb-2 bg-white " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item {% block cloginactive %}{% endblock %}" href="/clglog">College Login</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item {% block sloginactive %}{% endblock %}" href="/stdlog">Student Login</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item {% block floginactive %}{% endblock %}" href="/faclog">Faculty Login</a></li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link {% block showcollegeactive %}{% endblock %}" href="../showcollege">Show Colleges</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link {% block contactactive %}{% endblock %}" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block aboutactive %}{% endblock %}" href="/about">About</a>
+                </li>
+                <form class="d-flex" action="../search">
+                    <input class="form-control me-2 mx-2" type="search" placeholder="Search Colleges" name="se" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+
+                <!--  <li class="nav-item dropdown">-->
+                <!--    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
+                <!--    <div class="dropdown-menu">-->
+                <!--      <a class="dropdown-item" href="#">active</a>-->
+                <!--      <a class="dropdown-item" href="#">Another action</a>-->
+                <!--      <a class="dropdown-item" href="#">Something else here</a>-->
+                <!--      <div class="dropdown-divider"></div>-->
+                <!--      <a class="dropdown-item" href="#">Separated link</a>-->
+                <!--    </div>-->
+                <!--  </li>-->
+        </ul>
+        <!--  <a class="navbar-brand" href="#">OpenSource Project</a>-->
+    </nav>
+
+
+    {% block content %}{% endblock %}
+
+    <div class="container">
+        <div class="row">
+            <h2></h2>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-fluid bg-black py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row py-0">
+                            <div class="col-sm-1 hidden-md-down">
+                                <a class="bg-circle bg-info" href="/contact">
+                                    <i class="fa fa-2x fa-fw fa-address-card" aria-hidden="true "></i>
+                                </a>
+                            </div>
+                            <div class="col-sm-11 text-white">
+                                <div>
+                                    <h4>  Contact</h4>
+                                    <a href="/ " style="text-decoration: none;">
+                                        <p class="header-font">Online Student Portal</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="d-inline-block">
+                            <div class="bg-circle-outline d-inline-block" style="background-color:#3b5998">
+                                <a href="https://www.facebook.com/"><i class="fa fa-2x fa-fw fa-facebook text-white"></i>
+ </a>
+                            </div>
+                            <div class="bg-circle-outline d-inline-block" style="background-color:#4099FF">
+                                <a href="https://twitter.com/">
+                                    <i class="fa fa-2x fa-fw fa-twitter text-white"></i></a>
+                            </div>
+
+                            <div class="bg-circle-outline d-inline-block" style="background-color:#0077B5">
+                                <a href="https://www.linkedin.com/company/">
+                                    <i class="fa fa-2x fa-fw fa-linkedin text-white"></i></a>
+                            </div>
+                            <div class="bg-circle-outline d-inline-block" style="background-color:#d34836">
+                                <a href="https://www.google.com/">
+                                    <i class="fa fa-2x fa-fw fa-google text-white"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/.footer-->
+    <p class="text-center"> Copyright © 2018 - 2022. All right reserved. </p>
+    <!--/.footer-bottom-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</body>
+
+</html>

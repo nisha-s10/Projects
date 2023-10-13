@@ -1,0 +1,297 @@
+ <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!-- Including jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+    <style>
+    body {
+        background-color: white;
+        padding: 0px;
+    }
+    
+    .cform {
+        text-decoration: none;
+        margin-left: 400px;
+        margin-right: 400px;
+        margin-top: 100px;
+        padding: 100px;
+        background-color: #333;
+    }
+    
+    h1,
+    h6 {
+        color: white;
+        text-align: center;
+    }
+    
+    p {
+        color: white;
+    }
+    
+    .but {
+        background-color: #04AA6D;
+        padding: 10px 15px;
+        color: white;
+        text-decoration: none;
+    }
+    
+    div.relative {
+        position: relative;
+        width: 1000px;
+        height: 100px;
+        /* border: 3px solid #73AD21; */
+    }
+    
+    div.absolute {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        width: 400px;
+        height: 100px;
+        font-size: 50px;
+        /* border: 3px solid #73AD21; */
+    }
+</style>   
+<script>
+    function call() {
+        if (pwd.value == cpwd.value)
+            result.innerHTML = "<font color='green'>Password Matched</font>"
+        else
+            result.innerHTML = "<font color='red'>Password Not Matched</font>"
+    }
+</script>
+
+
+    {% extends "college/header.html" %}
+    {% load static %} {% load crispy_forms_tags %}
+    <!--connect header file-->
+    {% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{user}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+
+    <!-- options-->
+    <!--alert-->
+    {% if m %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+        <strong>Message :</strong> {{m}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script type="text/javascript">
+        setTimeout(function() {
+
+            // Closing the alert
+            $('#alert').alert('close');
+        }, 2000);
+    </script>
+    {% endif %}
+
+    <!--form-->
+    <style>
+        .register{
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+            margin-top: 3%;
+            padding: 3%;
+        }
+        .register-left{
+            text-align: center;
+            color: #fff;
+            margin-top: 4%;
+        }
+        .register-left input{
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            width: 60%;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #383d41;
+            margin-top: 30%;
+            margin-bottom: 3%;
+            cursor: pointer;
+        }
+        .register-right{
+            background: #f8f9fa;
+            border-top-left-radius: 10% 50%;
+            border-bottom-left-radius: 10% 50%;
+        }
+        .register-left img{
+            margin-top: 15%;
+            margin-bottom: 5%;
+            width: 25%;
+            -webkit-animation: mover 2s infinite  alternate;
+            animation: mover 1s infinite  alternate;
+        }
+        @-webkit-keyframes mover {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        @keyframes mover {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        .register-left p{
+            font-weight: lighter;
+            padding: 12%;
+            margin-top: -9%;
+        }
+        .register .register-form{
+            padding: 10%;
+            margin-top: 10%;
+        }
+        .btnRegister{
+            float: right;
+            margin-top: 10%;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            background: #0062cc;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            cursor: pointer;
+        }
+        .register .nav-tabs{
+            margin-top: 3%;
+            border: none;
+            background: #0062cc;
+            border-radius: 1.5rem;
+            width: 28%;
+            float: right;
+        }
+        .register .nav-tabs .nav-link{
+            padding: 2%;
+            height: 34px;
+            font-weight: 600;
+            color: #fff;
+            border-top-right-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        .register .nav-tabs .nav-link:hover{
+            border: none;
+        }
+        .register .nav-tabs .nav-link.active{
+            width: 100px;
+            color: #0062cc;
+            border: 2px solid #0062cc;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+        }
+        .register-heading{
+            text-align: center;
+            margin-top: 8%;
+            margin-bottom: -15%;
+            color: #495057;
+        }
+    </style>
+ 
+
+
+    <form action="../college/stdreg" method="post" enctype="multipart/form-data">
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                    <h3>Welcome</h3>
+                    <p>You are few more steps to far!</p>
+                    <input type="submit" name="" value="Register"/><br/>
+                </div>
+                <div class="col-md-9 register-right">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="../college/stdreg" role="tab" aria-controls="profile" aria-selected="false">Login</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3 class="register-heading">Register Student</h3>
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                   
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="{{user.cname}}"  readonly/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="rolno" placeholder="Roll Number" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="pass" id="pwd" placeholder="Password *" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" minlength="1" maxlength="1" name="sem" class="form-control" placeholder="Semester"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" name="co" id="co">
+                                            <option class="hidden"  value="courses" selected disabled >Select Course</option>
+                                            {% for task in courses %}
+                                            <option value="{{task.pk}}">{{task.coname}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="address" placeholder="Address" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="desc" placeholder="Description"  />
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                    
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="fullname" placeholder="Student Name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Email" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" onkeyup="call()" name="cpass" id="cpwd" placeholder="Confirm Password *" />
+                                        <span id="result"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" minlength="10" maxlength="10" name="mobile" class="form-control" placeholder="Mobile No."  />
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" name="br" id="br">
+                                            <option class="hidden"  value="branches" selected disabled >Select Branch</option>
+                                            {% for task in branches %}
+                                            <option value="{{task.pk}}">{{task.brname}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="city"  placeholder="City"  />
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="imag" placeholder="Image"  />
+                                    </div>{% csrf_token %}
+                                    <input type="submit" class="btnRegister"  class="but" value="Register"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    {% endblock %}

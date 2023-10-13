@@ -1,0 +1,40 @@
+{% extends 'college/header.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{user}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <div class="row">
+        {% for fac in faculty %}
+        <div class="col-md-3">
+            <a href="{% url 'sub' fac.id %}">
+                <div class="card">
+                    <div class="card-header">{{fac.fname}}</div>
+                    {% comment %} <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                    {% comment %} <div class="card-footer mt-auto ">
+                        <a href="{% url 'delete_course' co.id %}">
+                            <i class="fa fa-trash fa-2x"></i></a>
+                    </div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <br><br>
+
+    </div>
+</div>
+
+
+{% endblock content %}

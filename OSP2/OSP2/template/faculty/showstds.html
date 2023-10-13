@@ -1,0 +1,93 @@
+{% extends "faculty/header.html" %} {% load static %} {% load crispy_forms_tags %}
+<!--connect header file-->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{user}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+
+<div class="signup-form">
+    <form action="../faculty/showstds" method="post">
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <select id="subject" name="subject">
+                            <option value="" disabled selected>-----Select Subject-----</option>
+                            {% for task in subject %}
+                            <option value="{{task.id}}">{{task.suname}}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+               
+                <div class="col">
+                    <a href="#">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">
+                  Search Now
+                </button></a>
+                    {% csrf_token %}
+                </div>
+            </div>
+
+    </form>
+    </div>
+
+
+
+
+
+
+
+    <!--List of All Students-->
+    <center>
+        <h1 style="color: #333;">{{d}}</h1>
+    </center><br> {% load static %}
+    <center>
+        <div class="container">
+            {% if data %}
+            <table class="table table-striped table-bordered table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Roll No.</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Semester</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                       <td> {{task.sname}}</td>
+                        <td>{{task.rolno}}</td>
+                        <td>{{task.coid}}</td>
+                        <td>{{task.brid}}</td>
+                        <td>{{task.sem}}</td>
+                        
+
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h4>Sorry......No results...!!</h4>
+            {% endif %}
+        </div>
+    </center>
+
+    {% endblock %}

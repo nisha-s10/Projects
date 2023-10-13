@@ -1,0 +1,45 @@
+{% extends 'college/header.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{user}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+<br><br><br><br>
+<center>
+<div class="container">
+<div class="row">
+{% for s in student %}
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{s.sname}}</div>
+                    <div class="card-body"><b>Roll No.:</b>{{s.rolno}}</div>
+                    <div class="card-body"><b>Semester:</b>{{s.sem}}</div>
+                    <div class="card-body"><b>Course:</b>{{s.coid}}({{s.brid}})</div>
+                    <div class="card-body"><b>Email id:</b>{{s.semail}}</div>
+                    <div class="card-body"><b>Contact:</b>{{s.smob}}</div>
+                    <div class="card-body"><b>Address:</b>{{s.sadd}}({{s.scity}})</div>
+                    <div class="card-body"><b>Description:</b>{{s.sdesc}}</div>
+                    {% comment %} <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+{%endfor%}
+    </div>
+    </div>
+</center>
+{%endblock%}

@@ -1,0 +1,67 @@
+{% extends 'college/header.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+    <strong>Message :</strong> {{m}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<script type="text/javascript">
+    setTimeout(function() {
+
+        // Closing the alert
+        $('#alert').alert('close');
+    }, 2000);
+</script>
+
+<!-- options-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{user}}</div>
+                    {% comment %}
+                    <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+<br><br><br><br>
+<center>
+<div class="container">
+    <div class="row">
+    <div class="col-md-3">
+            <a href="{% url 'fac' %}">
+                <div class="card">
+                    <div class="card-header">Assign Subjects</div>
+                    <div class="card-body">Assign Subjects to Faculty</div>
+                </div>
+            </a>
+        </div>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-3">
+            <a href="{% url 'coreg' %}">
+                <div class="card">
+                    <div class="card-header">Course</div>
+                    <div class="card-body">Manage courses of your College</div>
+                </div>
+            </a>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-3">
+            <a href="{% url 'assign_sub' %}">
+                <div class="card">
+                    <div class="card-header">Assign Subjects</div>
+                    <div class="card-body">Assign Subjects to Students</div>
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+</div>
+    </div>
+</center>
+{% endblock %}

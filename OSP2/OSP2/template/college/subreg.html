@@ -1,0 +1,54 @@
+{% extends 'college/header.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
+
+<div class="container">
+<div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{course}}({{branch}})</div>
+                    {% comment %} <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+    </div>
+    <br><br>
+<div class="container">
+    <div class="row">
+        {% for su in subject %}
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header">{{su.suname}}</div>
+                    {% comment %} <div class="card-body">{{note.description|slice:"0:100"}}</div> {% endcomment %}
+                    <div class="card-footer mt-auto ">
+                        <a href="{% url 'delete_subject' su.id %}">
+                            <i class="fa fa-trash fa-2x"></i></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Subjects</legend>
+        </fieldset>
+        {{form|crispy}}
+        <div class="form-group">
+            <button href="" class="btn btn-outline-info" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
