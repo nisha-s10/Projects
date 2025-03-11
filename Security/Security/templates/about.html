@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="{% static 'images/logo.jpeg' %}" type="image/x-icon">
+
+  <title>Akhand Bharat Commando</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <div class="hero_bg_box">
+      <div class="img-box">
+        <img src="{% static 'images/hero-bg.jpg' %}" alt="">
+      </div>
+    </div>
+
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_link-container">
+            <a href="" class="contact_link1">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Vidhya Kund, Ayodhya
+              </span>
+            </a>
+            <a href="" class="contact_link2">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +91 8874305306
+              </span>
+            </a>
+            <a href="" class="contact_link3">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                demo@gmail.com
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="/">
+              <img src="{% static 'images/logo.jpeg' %}" alt="Guarder Logo" class="site-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""></span>
+            </button>
+
+            <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href=""> About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/./service"> Services </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/./guard"> Guards </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/./contact">Contact us</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 px-0">
+          <div class="img_container">
+            <div class="img-box">
+              <img src="{% static 'images/about1.jpeg' %}" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 px-0">
+          <div class="detail-box">
+            <div class="heading_container ">
+              <h2>
+                Who Are We?
+              </h2>
+            </div>
+            <p>
+              We are a professional security service provider dedicated to ensuring safety and protection for homes, offices, and individuals.
+              With a team of highly trained and experienced security guards, we offer reliable, round-the-clock security solutions tailored to your needs.
+            </p>
+            <div class="btn-box">
+              <a href="#" data-toggle="modal" data-target="#aboutModal">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">Who Are We?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+          <p>
+            We are a professional security service provider dedicated to ensuring safety and protection for homes, offices, and individuals.
+            With a team of highly trained and experienced security guards, we offer reliable, round-the-clock security solutions tailored to your needs.
+          </p>
+          <p>
+            Our commitment to excellence, vigilance, and integrity makes us a trusted choice for safeguarding people and properties.
+            We provide security personnel for residential areas, corporate buildings, event security, and VIP protection.
+          </p>
+          <p>
+            Our trained professionals ensure a secure environment with the latest security technology, rapid response teams, and proactive measures to prevent security breaches.
+            We prioritize customer satisfaction and work closely with our clients to understand their unique security requirements.
+          </p>
+          <p>
+            Your security is our top priority! Contact us today to discuss how we can provide the best protection for you and your assets.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end about section -->
+
+  <!-- info section -->
+  <section class="info_section">
+    <div class="container">
+      <div class="row">
+        <!-- Logo, Company Name & Description -->
+        <div class="col-md-3">
+          <div class="info_logo text-center">
+            <a class="navbar-brand" href="/">
+              <img src="{% static 'images/logo.jpeg'%}" alt="Company Logo" class="company-logo">
+            </a>
+            <h4 class="company-name">Akhand Bharat Commando</h4>
+            <p>
+              We provide top-tier security solutions, ensuring safety and peace of mind for homes, offices, and businesses.
+            </p>
+          </div>
+        </div>
+  
+        <!-- Our Services Section -->
+        <div class="col-md-3">
+          <div class="info_services">
+            <h5>Our Services</h5>
+            <ul class="security_list">
+              <li>Home Security</li>
+              <li>Office Security</li>
+              <li>Event Security</li>
+              <li>Bodyguard Services</li>
+              <li>Industrial Security</li>
+              <li>Hospital Security</li>
+          </ul>
+          </div>
+        </div>
+  
+        <!-- Contact Us Section (Same as Before) -->
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>Contact Us</h5>
+          </div>
+          <div class="info_contact">
+            <a href="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>Vidhya Kund, Ayodhya</span>
+            </a>
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>Call: +91 8874305306</span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>demo@gmail.com</span>
+            </a>
+          </div>
+        </div>
+  
+        <!-- Newsletter Section (Same as Before) -->
+        <div class="col-md-3">
+          <div class="info_form">
+            <h5>Newsletter</h5>
+            <form action="#">
+              <input type="email" placeholder="Enter your email">
+              <button>Subscribe</button>
+            </form>
+            <div class="social_box">
+              <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end info_section -->
+
+
+
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <p>
+      &copy; <span id="currentYear"></span> All Rights Reserved.
+    </p>
+  </footer>
+  <!-- footer section -->
+
+  <script src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>
