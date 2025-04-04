@@ -10,10 +10,6 @@
             <div class="form-wrapper align-items-center">
                 <div class="form sign-up">
                     <div class="input-group">
-                        <i class='bx bxs-user'></i>
-                        <input type="text" placeholder="Username">
-                    </div>
-                    <div class="input-group">
                         <i class='bx bx-mail-send'></i>
                         <input type="email" placeholder="Email">
                     </div>
@@ -21,16 +17,12 @@
                         <i class='bx bxs-lock-alt'></i>
                         <input type="password" placeholder="Password">
                     </div>
-                    <div class="input-group">
-                        <i class='bx bxs-lock-alt'></i>
-                        <input type="password" placeholder="Confirm password">
-                    </div>
                     <button>
-                        Sign up
+                        Sign in
                     </button>
                     <p>
                         <span>
-                            Already have an account?
+                            Are you an Employee?
                         </span>
                         <b onclick="toggle()" class="pointer">
                             Sign in here
@@ -42,39 +34,42 @@
         </div>
         <!-- END SIGN UP -->
         <!-- SIGN IN -->
+        
         <div class="col align-items-center flex-col sign-in">
             <div class="form-wrapper align-items-center">
-                <div class="form sign-in">
-                    <div class="input-group">
-                        <i class='bx bxs-user'></i>
-                        <input type="text" placeholder="Username">
+                <form action="{% url 'emplog' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form sign-in">
+                        <div class="input-group">
+                            <i class='bx bx-mail-send'></i>
+                            <input type="email" placeholder="Email" name="e_email">
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" placeholder="Password" name="e_pass">
+                        </div>
+                        <button type="submit">Sign in</button> <!-- Add type="submit" -->
+                        <p>
+                            <b>
+                                Forgot password?
+                            </b>
+                        </p>
+                        <p>
+                            <span>
+                                Are you an Admin?
+                            </span>
+                            <b onclick="toggle()" class="pointer">
+                                Sign in here
+                            </b>
+                        </p>
                     </div>
-                    <div class="input-group">
-                        <i class='bx bxs-lock-alt'></i>
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <button>
-                        Sign in
-                    </button>
-                    <p>
-                        <b>
-                            Forgot password?
-                        </b>
-                    </p>
-                    <p>
-                        <span>
-                            Don't have an account?
-                        </span>
-                        <b onclick="toggle()" class="pointer">
-                            Sign up here
-                        </b>
-                    </p>
-                </div>
+                </form>
             </div>
             <div class="form-wrapper">
-    
+            
             </div>
         </div>
+        
         <!-- END SIGN IN -->
     </div>
     <!-- END FORM SECTION -->

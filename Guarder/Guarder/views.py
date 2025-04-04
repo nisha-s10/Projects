@@ -16,7 +16,6 @@ def login(request):
 
 def emplog(request):
     if request.method =='POST':
-        print("here")
         try:
             n = request.POST['e_email']
             p = request.POST['e_pass']

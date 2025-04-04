@@ -80,6 +80,8 @@
     .form-wrapper {
         width: 100%;
         max-width: 28rem;
+        display: flex;
+        justify-content: center;
     }
 
     .form {
@@ -91,6 +93,12 @@
         transform: scale(0);
         transition: .5s ease-in-out;
         transition-delay: 1s;
+    }
+
+    form {
+        margin: 0;
+        padding: 0;
+        width: 100%;
     }
 
     .input-group {
@@ -369,5 +377,67 @@
             margin: .5rem;
             font-size: 2rem;
         }
+
+        .form-wrapper form {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--white);
+            border-radius: 1.5rem;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transform: scale(0);
+            transition: .5s ease-in-out;
+            transition-delay: 1s;
+        }
+        
+        .form-wrapper form .form {
+            padding: 1rem;
+            background-color: var(--white);
+            border-radius: 1.5rem;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transform: scale(1); /* Ensure form is visible */
+        }
+        
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            color: var(--gray-2);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            background-color: var(--gray);
+            border-radius: .5rem;
+            border: 0.125rem solid var(--white);
+            outline: none;
+        }
+        
+        .input-group input:focus {
+            border: 0.125rem solid var(--primary-color);
+        }
+        
+        .form button {
+            cursor: pointer;
+            width: 100%;
+            padding: .6rem 0;
+            border-radius: .5rem;
+            border: none;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 1.2rem;
+            outline: none;
+        }
+        
     }
 }
