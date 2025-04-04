@@ -1,4 +1,14 @@
 {% load static %}
+
+{% if m %}
+<div class="custom-alert" id="custom-alert">
+    <span class="alert-text">{{ m }}</span>
+    <button class="close-btn" onclick="dismissAlert()">×</button>
+</div>
+
+{% endif %}
+
+
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <script src="{% static 'js/styles.js' %}"></script>
 <body id="login">
