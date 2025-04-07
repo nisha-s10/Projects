@@ -6,7 +6,7 @@ import datetime
 ALLOTTED_TIME = 0.5
 
 def index(request):
-    if 'employee_id' in request.session:
+    if 'owner_id' in request.session:
         current_time = datetime.datetime.now()
 
         # Ensure 'login_time' is set in session
@@ -19,7 +19,7 @@ def index(request):
         # Check if the session has expired
         if current_time - login_time < datetime.timedelta(minutes=ALLOTTED_TIME):
             request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")  # Update login time
-            return render(request, 'employee/index.html')
+            return render(request, 'owner/index.html')
         else:
             request.session.flush()  # Clear session if timeout occurs
             param = {'m': 'Session timed out. Please log in again.'}
