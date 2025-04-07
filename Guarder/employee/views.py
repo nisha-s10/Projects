@@ -23,6 +23,7 @@ def index(request):
             e_id = request.session['employee_id']
             employee = Employee.objects.get(employee_id=e_id)
             # Pass the employee details to the template
+
             context = {'employee': employee}
             return render(request, 'employee/index.html', context)
         else:
@@ -32,7 +33,7 @@ def index(request):
     else:
         param = {'m': 'Please log in first.'}
         return render(request, 'login.html', param)
-
+    
 
 def logout(request):
     request.session.flush()  # Clear session data

@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login as auth_login
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from employee.models import *
 from owner.models import *
 import datetime
@@ -55,3 +55,11 @@ def ownerlog(request):
             return render(request, 'login.html', param)
 
     return render(request, 'login.html')
+
+
+def details(request, employee_id):
+    # Fetch employee details using employee_id
+    employee = get_object_or_404(Employee, employee_id=employee_id)
+
+    # Render template with employee details
+    return render(request, 'details.html', {'employee': employee})
