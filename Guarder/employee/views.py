@@ -4,7 +4,7 @@ from employee.models import *
 import datetime
 
 # Define session timeout duration (in minutes)
-ALLOTTED_TIME = 0.5
+ALLOTTED_TIME = 2
 
 def index(request):
     if 'employee_id' in request.session:
@@ -36,4 +36,5 @@ def index(request):
 
 def logout(request):
     request.session.flush()  # Clear session data
-    return redirect('/')  # Redirect to main index page
+    param = {'m': 'Logged out successfully.'}
+    return render(request, 'index.html', param)

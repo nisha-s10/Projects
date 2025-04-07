@@ -48,7 +48,11 @@
     }
     
     .site-logo {
+        width: 70px; /* Adjust the width to make it larger */
+        height: 70px; /* Ensure aspect ratio is maintained */
+        border-radius: 50%; /* Make the logo circular */
         margin-right: 10px;
+        object-fit: cover; /* Ensure image fits within the circular shape */
     }
     
     footer {
