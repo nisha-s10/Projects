@@ -44,18 +44,18 @@
 
 #index {
     body {
-    font-family: Arial, sans-serif;
-}
-
+        font-family: Arial, sans-serif;
+    }
+    
     .site-logo {
         margin-right: 10px;
     }
-
+    
     footer {
         background-color: #f8f9fa;
         padding: 10px 0;
     }
-
+    
     .nav-link {
         color: #007bff; /* Default link color */
     }
@@ -63,6 +63,48 @@
     .nav-link:hover {
         text-decoration: underline; /* Underline on hover */
     }
+    
+    .navbar-nav .nav-item.active .nav-link {
+        color: #007bff; /* Active link color */
+    }
+
+    /* Add a black underline for the active nav-link */
+    .navbar-nav .nav-link.active.custom-active-link {
+        position: relative;
+    }
+
+    .navbar-nav .nav-link.active.custom-active-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; /* Adjust as needed */
+        left: 0;
+        width: 100%;
+        height: 3px; /* Thickness of the underline */
+        background-color: black; /* Color of the underline */
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+    
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+    
+    .card-body {
+        padding: 10px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .card-text {
+        font-size: 0.9rem;
+    }
+    
 }
 
 :root {

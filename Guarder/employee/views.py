@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from employee.models import *
 import datetime
 
 # Define session timeout duration (in minutes)
@@ -19,7 +20,11 @@ def index(request):
         # Check if the session has expired
         if current_time - login_time < datetime.timedelta(minutes=ALLOTTED_TIME):
             request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")  # Update login time
-            return render(request, 'employee/index.html')
+            e_id = request.session['employee_id']
+            employee = Employee.objects.get(employee_id=e_id)
+            # Pass the employee details to the template
+            context = {'employee': employee}
+            return render(request, 'employee/index.html', context)
         else:
             request.session.flush()  # Clear session if timeout occurs
             param = {'m': 'Session timed out. Please log in again.'}
