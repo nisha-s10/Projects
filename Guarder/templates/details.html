@@ -24,8 +24,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
-            <h1>Personal Details</h1>
-            <p>Below are your personal details:</p>
+            <h1>Anurag</h1>
+            <p>Below are the employee details:</p>
             <table class="table table-striped">
                 <tbody>
                     <tr>
@@ -44,17 +44,23 @@
                         <th>Date of Birth</th>
                         <td>{{ employee.dob }}</td>
                     </tr>
+                    <tr>
+                        <th>Aadhar Number</th>
+                        <td>{{ employee.masked_aadhar_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <td>{{ employee.mobile_number }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <!-- Profile Photo Section -->
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/profile_photo.jpg' %}" class="card-img-top" alt="Profile Photo">
+                <img src="{% static 'images/Anurag.png' %}" class="card-img-top" alt="Profile Photo" style="max-width: 100%; height: auto;">
                 <div class="card-body">
                     <h5 class="card-title">Profile Photo</h5>
-                    <p class="card-text">Update your profile photo here.</p>
-                    <button class="btn btn-primary">Update Photo</button>
                 </div>
             </div>
         </div>

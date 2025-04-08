@@ -2,10 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import datetime
 from owner.models import *
+from django.views.decorators.cache import cache_control
 
 # Define session timeout duration (in minutes)
 ALLOTTED_TIME = 2
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def index(request):
     if 'owner_id' in request.session:
         current_time = datetime.datetime.now()

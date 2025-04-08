@@ -54,3 +54,8 @@ class Employee(models.Model):
         self.qr_code_data = buffer.read()
 
         super().save(*args, **kwargs)
+
+    @property
+    def masked_aadhar_number(self):
+        """Return last four digits of Aadhar number"""
+        return f"xxxx xxxx {self.aadhar_number[-4:]}"
