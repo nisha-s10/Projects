@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load base64filters %}
 
 <html lang="en">
 <head>
@@ -73,8 +74,8 @@
             <!-- Display QR Code -->
             <div class="mt-3">
                 <h5>QR Code</h5>
-                {% if employee.qr_code %}
-                    <img src="{{ employee.qr_code.url }}" alt="QR Code" style="width: 150px; height: 150px;">
+                {% if employee.qr_code_data %}
+                    <img src="data:image/png;base64,{{ employee.qr_code_data|base64 }}" alt="QR Code" style="width: 150px; height: 150px;"/>
                 {% else %}
                     <p>No QR Code available.</p>
                 {% endif %}

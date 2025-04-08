@@ -9,7 +9,9 @@ class Employee(models.Model):
     # Add other relevant fields
     name = models.CharField(max_length=100)  # Example field for employee name
     dob = models.DateField()
-    qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)
+    aadhar_number = models.CharField(max_length=12, unique=True, blank=True, null=True)  # New field for Aadhar number
+    mobile_number = models.CharField(max_length=10, blank=True, null=True)  # New field for mobile number
+    qr_code_data = models.BinaryField(blank=True, null=True)  # Store QR code as binary data
 
     def __str__(self):
         return f"{self.name} ({self.employee_id})"  # Display name and ID in admin
@@ -36,6 +38,6 @@ class Employee(models.Model):
         buffer.seek(0)
 
         # Save image to the ImageField
-        self.qr_code.save(f"{self.employee_id}_qr.png", ContentFile(buffer.read()), save=False)
+        self.qr_code_data = buffer.read()
 
         super().save(*args, **kwargs)
