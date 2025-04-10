@@ -7,7 +7,8 @@ import datetime
 
 
 def index(request):
-    return render(request, 'index.html')
+    m = request.session.pop('m', None)
+    return render(request, 'index.html', {'m': m})
 
 def login(request):
     return render(request, 'login.html')

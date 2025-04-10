@@ -128,5 +128,5 @@ def deleteemp(request, id):
 
 def logout(request):
     request.session.flush()  # Clear session data
-    param = {'m': 'Logged out successfully.'}
-    return render(request, 'index.html', param)
+    request.session['m'] = 'Logged out successfully.'
+    return redirect('/')
