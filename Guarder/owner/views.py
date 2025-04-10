@@ -95,7 +95,31 @@ def regemp(request):
             return render(request, 'login.html', {'m': 'Session timed out. Please log in again.'})
     else:
         return render(request, 'login.html', {'m': 'Please log in first.'})
-
+    
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def viewemp(request, id):
+    if 'owner_id' in request.session:
+        try:
+            emp = Employee.objects.get(pk=id)
+            return render(request, 'owner/viewemp.html', {'emp': emp})
+        except Employee.DoesNotExist:
+            return redirect('empdetails')
+    else:
+        return redirect('login')
+    
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def deleteemp(request, id):
+    if 'owner_id' in request.session:
+        if request.method == "POST":
+            try:
+                Employee.objects.get(pk=id).delete()
+                return redirect('empdetails')
+            except Employee.DoesNotExist:
+                return redirect('empdetails')
+        else:
+            return redirect('empdetails')
+    else:
+        return redirect('login')
 
 def logout(request):
     request.session.flush()  # Clear session data

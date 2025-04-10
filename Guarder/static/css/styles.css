@@ -80,6 +80,15 @@ footer {
     background-color: black; /* Color of the underline */
 }
 
+.delete-btn i {
+    transition: transform 0.3s ease;
+  }
+  
+  .delete-btn:hover i {
+    transform: rotate(-20deg) scale(1.2);
+    color: red;
+  }
+  
 #index {
     body {
         font-family: Arial, sans-serif;
