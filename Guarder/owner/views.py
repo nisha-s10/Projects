@@ -4,6 +4,7 @@ import datetime
 from owner.models import *
 from employee.models import *
 from django.views.decorators.cache import cache_control
+from django.urls import reverse
 
 # Define session timeout duration (in minutes)
 ALLOTTED_TIME = 30
@@ -47,7 +48,8 @@ def empdetails(request):
         if current_time - login_time < datetime.timedelta(minutes=ALLOTTED_TIME):
             request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")
             employees = Employee.objects.all()
-            return render(request, 'owner/empdetails.html', {'employees': employees})
+            m = request.GET.get('m')  # 👈 fetch message
+            return render(request, 'owner/empdetails.html', {'employees': employees, 'm': m})
         else:
             request.session.flush()
             return render(request, 'login.html', {'m': 'Session timed out. Please log in again.'})
@@ -73,8 +75,9 @@ def regemp(request):
                 dob = request.POST.get('e_dob', '')
                 mobile = request.POST.get('e_mob', '').strip()
                 aadhar = request.POST.get('e_adh', '').strip()
+                photo = request.FILES.get('e_photo')
 
-                if not all([name, email, password, confirm_password, dob, mobile, aadhar]):
+                if not all([name, email, password, confirm_password, dob, mobile, aadhar, photo]):
                     param = {'m': 'All fields are required.'}
                     return render(request, 'owner/regemp.html', param)
                 
@@ -85,9 +88,11 @@ def regemp(request):
                     dob=dob,
                     aadhar_number=aadhar,
                     mobile_number=mobile,
+                    photo=photo
                 )
-                param={'m':'Thank you for registration.'}
-                return render(request,'owner/empdetails.html', param)
+                employees = Employee.objects.all()
+                param={'m':'Thank you for registration.','employees': employees}
+                return redirect(f"{reverse('empdetails')}?m=Thank you for registration.")
             else:
                 return render(request, 'owner/regemp.html')
         else:
@@ -101,7 +106,7 @@ def viewemp(request, id):
     if 'owner_id' in request.session:
         try:
             emp = Employee.objects.get(pk=id)
-            return render(request, 'owner/viewemp.html', {'emp': emp})
+            return render(request, 'owner/viewemp.html', {'employee': emp})
         except Employee.DoesNotExist:
             return redirect('empdetails')
     else:

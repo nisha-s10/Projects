@@ -13,6 +13,7 @@ class Employee(models.Model):
     aadhar_number = models.CharField(max_length=12, unique=True, blank=True, null=True)  # New field for Aadhar number
     mobile_number = models.CharField(max_length=10, blank=True, null=True)  # New field for mobile number
     qr_code_data = models.BinaryField(blank=True, null=True)  # Store QR code as binary data
+    photo = models.ImageField(upload_to='employee_photos/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} ({self.employee_id})"  # Display name and ID in admin

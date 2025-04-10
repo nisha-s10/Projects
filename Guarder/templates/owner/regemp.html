@@ -168,7 +168,7 @@
     <!-- ✅ Form starts -->
     <div class="form-wrapper">
     <div class="centered-form">
-    <form action="{% url 'regemp' %}" method="POST" id="regemp">
+    <form action="{% url 'regemp' %}" method="POST" id="regemp" enctype="multipart/form-data">
       {% csrf_token %}
       <h2>Form Validation</h2>
       <div class="form-group fullname">
@@ -205,6 +205,10 @@
       <div class="form-group aadhar">
         <label for="aadhar">Aadhar Number</label>
         <input type="text" id="aadhar" placeholder="Enter your 12-digit Aadhar number" maxlength="12" pattern="[0-9]{12}" name="e_adh">
+      </div>
+      <div class="form-group photo">
+        <label for="photo">Upload Photo</label>
+        <input type="file" id="photo" name="e_photo" accept="image/*">
       </div>
       {% comment %} <div class="form-group gender">
         <label for="gender">Gender</label>

@@ -29,6 +29,12 @@ function dismissAlert() {
         alertBox.classList.add('hidden'); // Slide up and fade out
         setTimeout(() => alertBox.remove(), 500);
     }
+
+    if (window.history.replaceState) {
+      const url = new URL(window.location);
+      url.searchParams.delete('m');
+      window.history.replaceState({}, document.title, url.pathname + url.search);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -115,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const date = dateInput.value;
     const mobile = mobileInput.value.trim();
     const aadhar = aadharInput.value.trim();
+    const photoInput = document.getElementById("photo");
 
     const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     let hasError = false;
@@ -151,6 +158,26 @@ document.addEventListener("DOMContentLoaded", function () {
       hasError = true;
     }
 
+    // --- Image validation (photo)
+    if (photoInput && photoInput.files.length > 0) {
+      const file = photoInput.files[0];
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg", "image/webp"];
+
+      if (!allowedTypes.includes(file.type)) {
+        showError(photoInput, "Only JPG, JPEG, PNG, or WEBP images are allowed");
+        hasError = true;
+      }
+
+      const maxSize = 2 * 1024 * 1024; // 2MB
+      if (file.size > maxSize) {
+        showError(photoInput, "File size should be less than 2MB");
+        hasError = true;
+      }
+    } else {
+      showError(photoInput, "Please upload a photo");
+      hasError = true;
+    }
+
     if (!hasError) {
       form.submit();
     }
@@ -160,4 +187,3 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", handleFormData);
   }
 });
-
