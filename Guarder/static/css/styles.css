@@ -40,52 +40,52 @@
     opacity: 0;
 }
 
+.site-logo {
+    width: 70px; /* Adjust the width to make it larger */
+    height: 70px; /* Ensure aspect ratio is maintained */
+    border-radius: 50%; /* Make the logo circular */
+    margin-right: 10px;
+    object-fit: cover; /* Ensure image fits within the circular shape */
+}
 
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+.nav-link {
+    color: #007bff; /* Default link color */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #007bff; /* Active link color */
+}
+
+/* Add a black underline for the active nav-link */
+.navbar-nav .nav-link.active.custom-active-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link.active.custom-active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Adjust as needed */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Thickness of the underline */
+    background-color: black; /* Color of the underline */
+}
 
 #index {
     body {
         font-family: Arial, sans-serif;
     }
     
-    .site-logo {
-        width: 70px; /* Adjust the width to make it larger */
-        height: 70px; /* Ensure aspect ratio is maintained */
-        border-radius: 50%; /* Make the logo circular */
-        margin-right: 10px;
-        object-fit: cover; /* Ensure image fits within the circular shape */
-    }
     
-    footer {
-        background-color: #f8f9fa;
-        padding: 10px 0;
-    }
-    
-    .nav-link {
-        color: #007bff; /* Default link color */
-    }
-    
-    .nav-link:hover {
-        text-decoration: underline; /* Underline on hover */
-    }
-    
-    .navbar-nav .nav-item.active .nav-link {
-        color: #007bff; /* Active link color */
-    }
-
-    /* Add a black underline for the active nav-link */
-    .navbar-nav .nav-link.active.custom-active-link {
-        position: relative;
-    }
-
-    .navbar-nav .nav-link.active.custom-active-link::after {
-        content: '';
-        position: absolute;
-        bottom: -2px; /* Adjust as needed */
-        left: 0;
-        width: 100%;
-        height: 3px; /* Thickness of the underline */
-        background-color: black; /* Color of the underline */
-    }
 
     .card {
         margin-top: 20px;
@@ -108,7 +108,7 @@
     .card-text {
         font-size: 0.9rem;
     }
-    
+
 }
 
 :root {
@@ -531,4 +531,3 @@
         
     }
 }
-

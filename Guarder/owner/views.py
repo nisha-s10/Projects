@@ -2,10 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import datetime
 from owner.models import *
+from employee.models import *
 from django.views.decorators.cache import cache_control
 
 # Define session timeout duration (in minutes)
-ALLOTTED_TIME = 2
+ALLOTTED_TIME = 30
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def index(request):
@@ -34,6 +35,66 @@ def index(request):
     else:
         param = {'m': 'Please log in first.'}
         return render(request, 'login.html', param)
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def empdetails(request):
+    if 'owner_id' in request.session:
+        current_time = datetime.datetime.now()
+        if 'login_time' not in request.session:
+            request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")
+        login_time = datetime.datetime.strptime(request.session['login_time'], "%Y-%m-%d %H:%M:%S")
+        
+        if current_time - login_time < datetime.timedelta(minutes=ALLOTTED_TIME):
+            request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")
+            employees = Employee.objects.all()
+            return render(request, 'owner/empdetails.html', {'employees': employees})
+        else:
+            request.session.flush()
+            return render(request, 'login.html', {'m': 'Session timed out. Please log in again.'})
+    else:
+        return render(request, 'login.html', {'m': 'Please log in first.'})
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def regemp(request):
+    if 'owner_id' in request.session:
+        current_time = datetime.datetime.now()
+        if 'login_time' not in request.session:
+            request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")
+        login_time = datetime.datetime.strptime(request.session['login_time'], "%Y-%m-%d %H:%M:%S")
+        
+        if current_time - login_time < datetime.timedelta(minutes=ALLOTTED_TIME):
+            request.session['login_time'] = current_time.strftime("%Y-%m-%d %H:%M:%S")
+            if request.method=="POST":
+                name = request.POST.get('e_name', '').strip()
+                email = request.POST.get('e_email', '').strip()
+                password = request.POST.get('e_pass', '')
+                confirm_password = request.POST.get('e_cpass', '')
+                dob = request.POST.get('e_dob', '')
+                mobile = request.POST.get('e_mob', '').strip()
+                aadhar = request.POST.get('e_adh', '').strip()
+
+                if not all([name, email, password, confirm_password, dob, mobile, aadhar]):
+                    param = {'m': 'All fields are required.'}
+                    return render(request, 'owner/regemp.html', param)
+                
+                Employee.objects.create(
+                    email=email,
+                    password=password,  # In production, hash this!
+                    name=name,
+                    dob=dob,
+                    aadhar_number=aadhar,
+                    mobile_number=mobile,
+                )
+                param={'m':'Thank you for registration.'}
+                return render(request,'owner/empdetails.html', param)
+            else:
+                return render(request, 'owner/regemp.html')
+        else:
+            request.session.flush()
+            return render(request, 'login.html', {'m': 'Session timed out. Please log in again.'})
+    else:
+        return render(request, 'login.html', {'m': 'Please log in first.'})
 
 
 def logout(request):

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
+{% if m %}
+<div class="custom-alert" id="custom-alert">
+<span class="alert-text">{{ m }}</span>
+<button class="close-btn" onclick="dismissAlert()">×</button>
+</div>
+{% endif %}
 
 <html lang="en">
 <head>
@@ -27,7 +33,13 @@
                 <a class="nav-link active custom-active-link" href="{% url 'index' %}">Index</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
+                <a class="nav-link" href="{% url 'empdetails' %}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'regemp' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
     </div>
@@ -55,18 +67,24 @@
                     </tr>
                     <tr>
                         <th>Date of Birth</th>
-                        {% comment %} <td>{{ owner.dob }}</td> {% endcomment %}
+                        <td>{{ owner.dob }}</td>
+                    </tr>
+                    <tr>
+                        <th>Aadhar Number</th>
+                        <td>{{ owner.masked_aadhar_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <td>{{ owner.mobile_number }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/profile_photo.jpg' %}" class="card-img-top" alt="Profile Photo">
+                <img src="{% static 'images/profile_photo.jpg' %}" class="card-img-top" alt="Profile Photo" style="max-width: 100%; height: auto;">
                 <div class="card-body">
                     <h5 class="card-title">Profile Photo</h5>
-                    <p class="card-text">Update your profile photo here.</p>
-                    <button class="btn btn-primary">Update Photo</button>
                 </div>
             </div>
         </div>

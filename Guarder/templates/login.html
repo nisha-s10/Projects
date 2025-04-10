@@ -12,6 +12,7 @@
 <script src="{% static 'js/styles.js' %}"></script>
 
 <body id="login">
+
 <div id="container" class="container">
     <!-- FORM SECTION -->
     <div class="row">
@@ -21,6 +22,7 @@
                 <form action="{% url 'ownerlog' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form sign-up">
+                    <h3>Admin Login</h3>
                     <div class="input-group">
                         <i class='bx bx-mail-send'></i>
                         <input type="email" placeholder="Email" name="o_email">
@@ -56,6 +58,7 @@
                 <form action="{% url 'emplog' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form sign-in">
+                        <h3>Employee Login</h3>
                         <div class="input-group">
                             <i class='bx bx-mail-send'></i>
                             <input type="email" placeholder="Email" name="e_email">
