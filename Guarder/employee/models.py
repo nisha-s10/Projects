@@ -3,6 +3,9 @@ import qrcode
 from io import BytesIO
 from django.core.files.base import ContentFile
 import hashlib
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+import os
 class Employee(models.Model):
     employee_id = models.CharField(max_length=10, primary_key=True, blank=True)  # Use employee ID as primary key
     email = models.EmailField(unique=True)
@@ -60,3 +63,9 @@ class Employee(models.Model):
     def masked_aadhar_number(self):
         """Return last four digits of Aadhar number"""
         return f"xxxx xxxx {self.aadhar_number[-4:]}"
+    
+@receiver(post_delete, sender=Employee)
+def delete_employee_photo(sender, instance, **kwargs):
+    if instance.photo and instance.photo.path:
+        if os.path.isfile(instance.photo.path):
+            os.remove(instance.photo.path)
